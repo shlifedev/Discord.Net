@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Discord; 
+using Discord;
 using Discord.WebSocket;
 using RestSharp;
 using Newtonsoft.Json;
@@ -10,11 +10,16 @@ namespace Unity
     public class REST
     {
         public Discord discord;
- 
+
+        public readonly string  path =  Config.path;
+        public readonly string orga = Config.orga;
+        public readonly string projectID = Config.projectID;
+        public readonly string apikey = Config.apikey;
+
         public async void Build(string buildID)
         {
             var client = new RestClient("http://example.com");
-            await discord.SendMessage("잠시후 안드로이드 빌드가 시작됩니다! 알림이 울리지 않더라도 기다려주세요...");
+            await discord.SendMessage("빌드노예 에비츄는.. 이제부터 빌드를 할거에요.. 알림이 울리지 않더라도 기다리도록 하세여..");
 
             var request = new RestRequest(path + string.Format("orgs/{0}/projects/{1}/buildtargets/{2}/builds", orga, projectID, buildID), Method.GET);
             request.AddHeader("Content-Type", "application/json");
@@ -36,13 +41,13 @@ namespace Unity
         public async void CancelAll(string buildID)
         {
             var client = new RestClient("http://example.com");
-            await discord.SendMessage("안드로이드의 모든 빌드를 취소합니다.");
+            await discord.SendMessage("모든 빌드를 취소했답니다?");
             var request = new RestRequest(path + string.Format("orgs/{0}/projects/{1}/buildtargets/{2}/builds/", orga, projectID, buildID), Method.DELETE, DataFormat.Json);
             request.Method = Method.DELETE;
             request.AddHeader("Content-Type", "application/json");
             request.AddHeader("Authorization", apikey);
 
-            var response = client.Delete(request); 
+            var response = client.Delete(request);
             Console.WriteLine();
             Console.WriteLine(response.Request.Method);
             Console.WriteLine(response.Content);
@@ -54,7 +59,9 @@ namespace Unity
     {
         REST rest = new REST();
         private readonly DiscordSocketClient _client;
- 
+
+        public readonly string login_key = Config.discord_loginKey;
+
         ulong serverid = 577384911405711380;
         ulong apk_build = 577739512898256917;
         static void Main(string[] args)
@@ -127,4 +134,3 @@ namespace Unity
 
     }
 }
-

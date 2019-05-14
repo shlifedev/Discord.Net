@@ -12,8 +12,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord.Net.Rest", "src\Dis
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord.Net.WebSocket", "src\Discord.Net.WebSocket\Discord.Net.WebSocket.csproj", "{2F105E86-6909-445D-A202-B021AA05CE4F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord.Net.Webhook", "src\Discord.Net.Webhook\Discord.Net.Webhook.csproj", "{8165FAD1-B749-4994-ABCC-31A9FA0ED2C6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,18 +70,6 @@ Global
 		{2F105E86-6909-445D-A202-B021AA05CE4F}.Release|x64.Build.0 = Release|Any CPU
 		{2F105E86-6909-445D-A202-B021AA05CE4F}.Release|x86.ActiveCfg = Release|Any CPU
 		{2F105E86-6909-445D-A202-B021AA05CE4F}.Release|x86.Build.0 = Release|Any CPU
-		{8165FAD1-B749-4994-ABCC-31A9FA0ED2C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8165FAD1-B749-4994-ABCC-31A9FA0ED2C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8165FAD1-B749-4994-ABCC-31A9FA0ED2C6}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{8165FAD1-B749-4994-ABCC-31A9FA0ED2C6}.Debug|x64.Build.0 = Debug|Any CPU
-		{8165FAD1-B749-4994-ABCC-31A9FA0ED2C6}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8165FAD1-B749-4994-ABCC-31A9FA0ED2C6}.Debug|x86.Build.0 = Debug|Any CPU
-		{8165FAD1-B749-4994-ABCC-31A9FA0ED2C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8165FAD1-B749-4994-ABCC-31A9FA0ED2C6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8165FAD1-B749-4994-ABCC-31A9FA0ED2C6}.Release|x64.ActiveCfg = Release|Any CPU
-		{8165FAD1-B749-4994-ABCC-31A9FA0ED2C6}.Release|x64.Build.0 = Release|Any CPU
-		{8165FAD1-B749-4994-ABCC-31A9FA0ED2C6}.Release|x86.ActiveCfg = Release|Any CPU
-		{8165FAD1-B749-4994-ABCC-31A9FA0ED2C6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,7 +78,6 @@ Global
 		{F2FF84FB-F6AD-47E5-9EE5-18206CAE136E} = {BB59D5B5-E7B0-4BF4-8F82-D14431B2799B}
 		{2E111A6F-51F2-4F55-BD56-EEB341E4760D} = {BB59D5B5-E7B0-4BF4-8F82-D14431B2799B}
 		{2F105E86-6909-445D-A202-B021AA05CE4F} = {BB59D5B5-E7B0-4BF4-8F82-D14431B2799B}
-		{8165FAD1-B749-4994-ABCC-31A9FA0ED2C6} = {BB59D5B5-E7B0-4BF4-8F82-D14431B2799B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2404771-EEC8-45F2-9D71-F3373F6C1495}
