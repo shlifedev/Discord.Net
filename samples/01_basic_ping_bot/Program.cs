@@ -1,42 +1,70 @@
 using System;
 using System.Threading.Tasks;
-using Discord;
+using Discord; 
 using Discord.WebSocket;
 using RestSharp;
-
+using Newtonsoft.Json;
 namespace Unity
 {
 
     public class REST
     {
-        public readonly string  path = "https://build-api.cloud.unity3d.com/api/v1/";
-        public readonly string orga = "gamedevcom";
-
-        public void Build(string buildID)
+        public Discord discord;
+ 
+        public async void Build(string buildID)
         {
             var client = new RestClient("http://example.com");
+            await discord.SendMessage("잠시후 안드로이드 빌드가 시작됩니다! 알림이 울리지 않더라도 기다려주세요...");
 
-            var request = new RestRequest(path + string.Format("orgs/gamedevcom/projects/f15d8009-4472-4d5e-90dd-c8d911f79ba1/buildtargets/{0}/builds", buildID), Method.GET);
+            var request = new RestRequest(path + string.Format("orgs/{0}/projects/{1}/buildtargets/{2}/builds", orga, projectID, buildID), Method.GET);
             request.AddHeader("Content-Type", "application/json");
-            request.AddHeader("Authorization", "Basic  ");
+            request.AddHeader("Authorization", apikey);
 
             var response = client.Post(request);
-            var content = response.Content; // raw content as string
+
+            Console.WriteLine();
+            Console.WriteLine(response.Content);
+            Console.WriteLine();
+
+
+            if (response.Content.Contains("aleady a build pending."))
+            {
+                await discord.SendMessage("현재 보류된 빌드가 존재합니다. (너무 많은 요청, 혹은 빌드서버 과부하 등으로 보류되는거라 곧 빌드가 진행됩니다.)");
+            }
+        }
+
+        public async void CancelAll(string buildID)
+        {
+            var client = new RestClient("http://example.com");
+            await discord.SendMessage("안드로이드의 모든 빌드를 취소합니다.");
+            var request = new RestRequest(path + string.Format("orgs/{0}/projects/{1}/buildtargets/{2}/builds/", orga, projectID, buildID), Method.DELETE, DataFormat.Json);
+            request.Method = Method.DELETE;
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Authorization", apikey);
+
+            var response = client.Delete(request); 
+            Console.WriteLine();
+            Console.WriteLine(response.Request.Method);
+            Console.WriteLine(response.Content);
+            Console.WriteLine(response.StatusCode);
+            Console.WriteLine();
         }
     }
-    class Program
+    public class Discord
     {
         REST rest = new REST();
         private readonly DiscordSocketClient _client;
-
-  
+ 
+        ulong serverid = 577384911405711380;
+        ulong apk_build = 577739512898256917;
         static void Main(string[] args)
-        { 
-            new Program().MainAsync().GetAwaiter().GetResult();
+        {
+            new Discord().MainAsync().GetAwaiter().GetResult();
         }
 
-        public Program()
+        public Discord()
         {
+            rest.discord = this;
             // It is recommended to Dispose of a client when you are finished
             // using it, at the end of your app's lifetime.
             _client = new DiscordSocketClient();
@@ -49,7 +77,7 @@ namespace Unity
         public async Task MainAsync()
         {
             // Tokens should be considered secret data, and never hard-coded.
-            await _client.LoginAsync(TokenType.Bot, " ");
+            await _client.LoginAsync(TokenType.Bot, login_key);
             await _client.StartAsync();
 
             // Block the program until it is closed.
@@ -71,6 +99,11 @@ namespace Unity
             return Task.CompletedTask;
         }
 
+
+        public async Task SendMessage(string value)
+        {
+            var p = await _client.GetGuild(serverid).GetTextChannel(apk_build).SendMessageAsync(value);
+        }
         // This is not the recommended way to write a bot - consider
         // reading over the Commands Framework sample.
         private async Task MessageReceivedAsync(SocketMessage message)
@@ -79,11 +112,19 @@ namespace Unity
             if (message.Author.Id == _client.CurrentUser.Id)
                 return;
 
-            if (message.Content == "!android-build")
+            if (message.Channel.Id == 577739512898256917)
             {
-                await message.Channel.SendMessageAsync("Android Build Start");
-                rest.Build("build-android");
+                if (message.Content == "!build-android")
+                {
+                    rest.Build("build-android");
+                }
+                if (message.Content == "!build-android-cancel")
+                {
+                    rest.CancelAll("build-android");
+                }
             }
         }
+
     }
 }
+
