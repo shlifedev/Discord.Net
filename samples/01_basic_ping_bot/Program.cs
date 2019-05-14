@@ -2,26 +2,36 @@ using System;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
+using RestSharp;
 
-namespace _01_basic_ping_bot
+namespace Unity
 {
-    // This is a minimal, bare-bones example of using Discord.Net
-    //
-    // If writing a bot with commands, we recommend using the Discord.Net.Commands
-    // framework, rather than handling commands yourself, like we do in this sample.
-    //
-    // You can find samples of using the command framework:
-    // - Here, under the 02_commands_framework sample
-    // - https://github.com/foxbot/DiscordBotBase - a bare-bones bot template
-    // - https://github.com/foxbot/patek - a more feature-filled bot, utilizing more aspects of the library
+
+    public class REST
+    {
+        public readonly string  path = "https://build-api.cloud.unity3d.com/api/v1/";
+        public readonly string orga = "gamedevcom";
+
+        public void Build(string buildID)
+        {
+            var client = new RestClient("http://example.com");
+
+            var request = new RestRequest(path + string.Format("orgs/gamedevcom/projects/f15d8009-4472-4d5e-90dd-c8d911f79ba1/buildtargets/{0}/builds", buildID), Method.GET);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Authorization", "Basic  ");
+
+            var response = client.Post(request);
+            var content = response.Content; // raw content as string
+        }
+    }
     class Program
     {
+        REST rest = new REST();
         private readonly DiscordSocketClient _client;
 
-        // Discord.Net heavily utilizes TAP for async, so we create
-        // an asynchronous context from the beginning.
+  
         static void Main(string[] args)
-        {
+        { 
             new Program().MainAsync().GetAwaiter().GetResult();
         }
 
@@ -39,7 +49,7 @@ namespace _01_basic_ping_bot
         public async Task MainAsync()
         {
             // Tokens should be considered secret data, and never hard-coded.
-            await _client.LoginAsync(TokenType.Bot, Environment.GetEnvironmentVariable("token"));
+            await _client.LoginAsync(TokenType.Bot, " ");
             await _client.StartAsync();
 
             // Block the program until it is closed.
@@ -69,8 +79,11 @@ namespace _01_basic_ping_bot
             if (message.Author.Id == _client.CurrentUser.Id)
                 return;
 
-            if (message.Content == "!ping")
-                await message.Channel.SendMessageAsync("pong!");
+            if (message.Content == "!android-build")
+            {
+                await message.Channel.SendMessageAsync("Android Build Start");
+                rest.Build("build-android");
+            }
         }
     }
 }

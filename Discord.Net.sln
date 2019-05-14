@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord.Net.Core", "src\Discord.Net.Core\Discord.Net.Core.csproj", "{91E9E7BD-75C9-4E98-84AA-2C271922E5C2}"
 EndProject
@@ -24,9 +24,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord.Net.Webhook", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord.Net.Analyzers", "src\Discord.Net.Analyzers\Discord.Net.Analyzers.csproj", "{BBA8E7FB-C834-40DC-822F-B112CB7F0140}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{BB59D5B5-E7B0-4BF4-8F82-D14431B2799B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{BB59D5B5-E7B0-4BF4-8F82-D14431B2799B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_basic_ping_bot", "samples\01_basic_ping_bot\01_basic_ping_bot.csproj", "{F2FF84FB-F6AD-47E5-9EE5-18206CAE136E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unity", "samples\01_basic_ping_bot\Unity.csproj", "{F2FF84FB-F6AD-47E5-9EE5-18206CAE136E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02_commands_framework", "samples\02_commands_framework\02_commands_framework.csproj", "{4E1F1F40-B1DD-40C9-A4B1-A2046A4C9C76}"
 EndProject
