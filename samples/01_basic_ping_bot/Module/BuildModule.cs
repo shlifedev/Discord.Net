@@ -50,7 +50,7 @@ public class BuildModule : ModuleBase<SocketCommandContext>
         if (response.Content.Contains("aleady a build pending."))
         {
             await DiscordBot.Bot.SendMessage("현재 보류된 빌드가 존재합니다. (너무 많은 요청, 혹은 빌드서버 과부하 등으로 보류되는거라 곧 빌드가 진행됩니다.)");
-        }
+        } 
     }
      
 

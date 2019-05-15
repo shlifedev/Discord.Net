@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 public class ShareModule_NineStones : ModuleBase<SocketCommandContext>
 {
  
-    private int buildNumber = 42;
+    private int buildNumber = 46;
     [Discord.Commands.DontInject]
     public int BuildNumber
     {
