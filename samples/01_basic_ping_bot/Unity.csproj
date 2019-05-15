@@ -10,12 +10,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Discord.Net.Analyzers\Discord.Net.Analyzers.csproj" />
+    <ProjectReference Include="..\..\src\Discord.Net.Commands\Discord.Net.Commands.csproj" />
     <ProjectReference Include="..\..\src\Discord.Net.Core\Discord.Net.Core.csproj" />
+    <ProjectReference Include="..\..\src\Discord.Net.Providers.WS4Net\Discord.Net.Providers.WS4Net.csproj" />
+    <ProjectReference Include="..\..\src\Discord.Net.Rest\Discord.Net.Rest.csproj" />
+    <ProjectReference Include="..\..\src\Discord.Net.Webhook\Discord.Net.Webhook.csproj" />
     <ProjectReference Include="..\..\src\Discord.Net.WebSocket\Discord.Net.WebSocket.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder\" />
+    <Reference Include="mscorlib">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\mscorlib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
