@@ -208,3 +208,4 @@ docs/api/\.manifest
 # Codealike UID
 codealike.json
 samples/01_basic_ping_bot/Config.cs
+src/Discord/NinestonesBot/Config.cs
