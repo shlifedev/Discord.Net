@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 public class ShareModule_NineStones : ModuleBase<SocketCommandContext>
 {
  
-    private int buildNumber = 46;
+    private int buildNumber = 47;
     [Discord.Commands.DontInject]
     public int BuildNumber
     {
@@ -46,8 +46,8 @@ public class ShareModule_NineStones : ModuleBase<SocketCommandContext>
     [Command("setDownloadBuildVersion")]
     public async Task SetDownloadURL(int value)
     {
-        await DiscordBot.Bot.SendMessage(value + "버전으로 최신버전이 설정되었습니다.");
-        BuildNumber = value;
+        buildNumber = value;
+        await DiscordBot.Bot.SendMessage(value + "버전으로 최신버전이 설정되었습니다."); 
     } 
 
     public async Task GetDownloadURLAsync(string buildID, int buildNumber)
@@ -65,7 +65,7 @@ public class ShareModule_NineStones : ModuleBase<SocketCommandContext>
 
         var p = JsonConvert.DeserializeObject<ReceiveURL>(response.Content);
 
-        await DiscordBot.Bot.SendMessage(" 다운로드 링크가 만들어졌어요! \n 버전 :: " + BuildNumber + "\n https://developer.cloud.unity3d.com/share/share.html?shareId =" + p.shareid, 577827869661855764);
+        await DiscordBot.Bot.SendMessage(" 다운로드 링크가 만들어졌어요! \n 버전 :: " + BuildNumber + "\n https://developer.cloud.unity3d.com/share/share.html?shareId=" + p.shareid, 577827869661855764);
    
     }
 
