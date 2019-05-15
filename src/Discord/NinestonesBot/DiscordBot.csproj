@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -9,13 +9,10 @@
     <PackageReference Include="RestSharp" Version="106.6.9" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Discord.Net.Analyzers\Discord.Net.Analyzers.csproj" />
+  <ItemGroup> 
     <ProjectReference Include="..\..\Discord.Net.Commands\Discord.Net.Commands.csproj" />
     <ProjectReference Include="..\..\Discord.Net.Core\Discord.Net.Core.csproj" />
-    <ProjectReference Include="..\..\Discord.Net.Providers.WS4Net\Discord.Net.Providers.WS4Net.csproj" />
     <ProjectReference Include="..\..\Discord.Net.Rest\Discord.Net.Rest.csproj" />
-    <ProjectReference Include="..\..\Discord.Net.Webhook\Discord.Net.Webhook.csproj" />
     <ProjectReference Include="..\..\Discord.Net.WebSocket\Discord.Net.WebSocket.csproj" />
   </ItemGroup>
 

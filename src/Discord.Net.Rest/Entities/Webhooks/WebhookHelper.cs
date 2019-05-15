@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Discord.API.Rest;
 using ImageModel = Discord.API.Image;
