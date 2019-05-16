@@ -6,16 +6,25 @@ using Discord.Commands;
 using RestSharp;
 using Unity;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections;
+using System.Collections.Generic;
 // Modules must be public and inherit from an IModuleBase
 public class BuildModule : ModuleBase<SocketCommandContext>
 {
-
-
+  
+    public static Queue buildQueue; 
     [Command("build")]
     public async Task BuildAsync(string buildID)
     {
         await buildAsync(buildID);
         await DiscordBot.Bot.SendMessage("빌드노예 에비츄는.. 이제부터 빌드를 할거에요.. 알림이 울리지 않더라도 기다리도록 하세여..");
+    }
+    [Command("build")]
+    public async Task BuildAsync(string buildID, string desc)
+    {
+        await buildAsync(buildID);
+        await DiscordBot.Bot.SendMessage(string.Format("{0} 버전에대한 빌드에 대한 설명 : {1}", buildID, desc));
+        await DiscordBot.Bot.SendMessage("빌드노예 에비츄는.. 이제부터 빌드를 할거에요.. 알림이 울리지 않더라도 기다리도록 하세여.."); 
     }
     [Command("buildcancel")]
     public async Task CancelAllAsync(string buildID)
